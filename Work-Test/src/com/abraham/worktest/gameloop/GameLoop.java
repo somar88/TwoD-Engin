@@ -120,6 +120,8 @@ public class GameLoop extends Canvas implements Runnable {
 								// whole things
 		// GLO_Movement += (int) d_time;
 		// if (GLO_Movement > 60) {
+		
+		
 		GLO_YPOS = (GLO_YPOS + kbl.dir[0]);
 		if (GLO_YPOS >= HEIGHT - 32)
 			GLO_YPOS = HEIGHT - 32;
