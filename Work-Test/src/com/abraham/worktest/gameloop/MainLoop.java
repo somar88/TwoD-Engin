@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Random;
 
-public class GameLoop extends Canvas implements Runnable {
+public class MainLoop extends Canvas implements Runnable {
 
 	/**
 	 * 
@@ -47,12 +47,12 @@ public class GameLoop extends Canvas implements Runnable {
 	private BufferedImage entity_01 = new BufferedImage(32, 32, BufferedImage.TYPE_INT_RGB);
 	private int[] glPixels01 = ((DataBufferInt) entity_01.getRaster().getDataBuffer()).getData();
 
-	public GameLoop() {
+	public MainLoop() {
 		this.setSize(WIDTH, HEIGHT);
 		this.addKeyListener(kbl);
 	}
 
-	public GameLoop(int width, int hight) {
+	public MainLoop(int width, int hight) {
 		HEIGHT = hight;
 		WIDTH = width;
 		this.setSize(WIDTH, HEIGHT);
@@ -107,7 +107,7 @@ public class GameLoop extends Canvas implements Runnable {
 			try {
 				this.thread.join();
 			} catch (InterruptedException e) {
-				System.out.println("Error by closing theThread with the error message:");
+				System.out.println("Error by closing the Thread with the error message:");
 				System.out.println(e.getMessage());
 
 			}

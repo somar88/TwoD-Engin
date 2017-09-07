@@ -2,12 +2,12 @@ package com.abraham.worktest.main;
 
 import javax.swing.JFrame;
 
-import com.abraham.worktest.gameloop.GameLoop;
+import com.abraham.worktest.gameloop.MainLoop;
 
 public class Main {
 
 	public static void main(String args[]) {
-		GameLoop gl = new GameLoop();
+		MainLoop gl = new MainLoop();
 		JFrame frm = new JFrame();
 
 		frm.setSize(gl.WIDTH, gl.HEIGHT);
