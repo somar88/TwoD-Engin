@@ -2,7 +2,7 @@ package com.abraham.worktest.main;
 
 import javax.swing.JFrame;
 
-import com.abraham.worktest.gameloop.MainLoop;
+import com.abraham.worktest.mainloop.MainLoop;
 
 public class Main {
 

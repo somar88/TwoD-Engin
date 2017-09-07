@@ -1,4 +1,4 @@
-package com.abraham.worktest.gameloop;
+package com.abraham.worktest.mainloop;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
