@@ -1,4 +1,4 @@
-package com.abraham.worktest.mainloop;
+package com.abraham.gfx.worktest.mainloop;
 
 import java.awt.Canvas;
 import java.awt.Graphics;
@@ -10,7 +10,7 @@ import java.awt.image.DataBufferInt;
 import java.util.Random;
 
 import com.abraham.gfx.Sprite;
-import com.abraham.worktest.render.Render;
+import com.abraham.gfx.worktest.render.Render;
 
 public class MainLoop extends Canvas implements Runnable {
 

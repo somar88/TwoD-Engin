@@ -1,8 +1,8 @@
-package com.abraham.worktest.main;
+package com.abraham.gfx.worktest.main;
 
 import javax.swing.JFrame;
 
-import com.abraham.worktest.mainloop.MainLoop;
+import com.abraham.gfx.worktest.mainloop.MainLoop;
 
 public class Main {
 

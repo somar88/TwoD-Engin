@@ -23,7 +23,7 @@ public class SpriteSheet {
 			sheet_width = sheet_img.getWidth();
 			sheet_pixels = new int[sheet_height * sheet_width];
 			sheet_img.getRGB(0, 0, sheet_img.getWidth(), sheet_img.getHeight(), sheet_pixels, 0, sheet_img.getWidth());
-//			System.out.println("Sprite sheet loaded and ready.\n");
+			// System.out.println("Sprite sheet loaded and ready.\n");
 		} catch (Exception e) {
 
 			System.out.println("Error by Loading Spritesheet image:\n");
