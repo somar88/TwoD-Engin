@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Random;
 
+import com.abraham.gfx.Sprite;
+import com.abraham.worktest.render.Render;
+
 public class MainLoop extends Canvas implements Runnable {
 
 	/**
@@ -38,14 +41,15 @@ public class MainLoop extends Canvas implements Runnable {
 	public KeyboardListner kbl = new KeyboardListner();
 	private Thread thread;
 	private boolean running = false;
+	private Render render = new Render();
 
 	// Main screen drawing sheet
-	private BufferedImage drawingBoard = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-	private int[] gl_pixels = ((DataBufferInt) drawingBoard.getRaster().getDataBuffer()).getData();
+	public BufferedImage drawingBoard = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
+	public int[] ml_pixels = ((DataBufferInt) drawingBoard.getRaster().getDataBuffer()).getData();
 
 	// Test objects
-	private BufferedImage entity_01 = new BufferedImage(32, 32, BufferedImage.TYPE_INT_RGB);
-	private int[] glPixels01 = ((DataBufferInt) entity_01.getRaster().getDataBuffer()).getData();
+	public BufferedImage entity_01 = new BufferedImage(32, 32, BufferedImage.TYPE_INT_RGB);
+	public int[] glPixels01 = ((DataBufferInt) entity_01.getRaster().getDataBuffer()).getData();
 
 	public MainLoop() {
 		this.setSize(WIDTH, HEIGHT);
@@ -116,12 +120,11 @@ public class MainLoop extends Canvas implements Runnable {
 
 	private void tick(double d_time) {
 
-		clearImage(gl_pixels); // Clearing the drawing sheet for redrawing the
+		clearImage(ml_pixels); // Clearing the drawing sheet for redrawing the
 								// whole things
 		// GLO_Movement += (int) d_time;
 		// if (GLO_Movement > 60) {
-		
-		
+
 		GLO_YPOS = (GLO_YPOS + kbl.dir[0]);
 		if (GLO_YPOS >= HEIGHT - 32)
 			GLO_YPOS = HEIGHT - 32;
@@ -150,6 +153,10 @@ public class MainLoop extends Canvas implements Runnable {
 
 		Graphics g = bs.getDrawGraphics();
 
+		render.drawEntityAtPosition(GLO_XPOS, GLO_YPOS, Sprite.S.sprite, Sprite.S.sprite_width, Sprite.S.sprite_hight, this);
+
+		g.drawImage(drawingBoard, 0, 0, null);
+
 		//////////////////////////////////
 
 		// g.drawLine(0, 0, WIDTH, HIGHT);
@@ -164,10 +171,8 @@ public class MainLoop extends Canvas implements Runnable {
 		// g.drawLine(0, 0, WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 4);
 		// g.drawLine(0, 0, WIDTH / 2 - WIDTH / 4, HEIGHT / 2 - HEIGHT / 4);
 
-		drawEntityAtPosition(GLO_XPOS, GLO_YPOS, glPixels01, entity_01.getWidth(), entity_01.getHeight());
 		// drawEntityAtPosition(random.nextInt(WIDTH), random.nextInt(HEIGHT),
 		// glPixels01, entity_01.getWidth(),entity_01.getHeight());
-		g.drawImage(drawingBoard, 0, 0, null);
 		// Stuff drawing area
 
 		//////////////////////////////////
@@ -176,28 +181,19 @@ public class MainLoop extends Canvas implements Runnable {
 		bs.show();
 	}
 
-	private void drawEntityAtPosition(int xPos, int yPos, int[] item, int itemWidth, int itemHeight) {
-		for (int x = 0; x < itemWidth; x++) {
-
-			if (x + xPos >= WIDTH || x + xPos < 0) {
-				continue;
-			}
-
-			for (int y = 0; y < itemHeight; y++) {
-				// when the y position is more that what we have on the main
-				// screen we have to stop displaying
-				// and move forward with drawing loop
-
-				if (y + yPos >= HEIGHT || y + yPos < 0) {
-					continue;
-				}
-
-				gl_pixels[((y + yPos) * WIDTH) + (x + xPos)] = item[(y * itemWidth) + (x)];
-			}
-
-		}
-	}
-
+	/*
+	 * private void drawEntityAtPosition(int xPos, int yPos, int[] item, int itemWidth, int itemHeight) { for (int x = 0; x < itemWidth; x++) {
+	 * 
+	 * if (x + xPos >= WIDTH || x + xPos < 0) { continue; }
+	 * 
+	 * for (int y = 0; y < itemHeight; y++) { // when the y position is more that what we have on the main // screen we have to stop displaying // and move forward with drawing loop
+	 * 
+	 * if (y + yPos >= HEIGHT || y + yPos < 0) { continue; }
+	 * 
+	 * ml_pixels[((y + yPos) * WIDTH) + (x + xPos)] = item[(y * itemWidth) + (x)]; }
+	 * 
+	 * } }
+	 */
 	private void clearImage(int[] imagePixelsArray) {
 		for (int i = 0; i < imagePixelsArray.length; i++) {
 			imagePixelsArray[i] = 0xff00ff;
