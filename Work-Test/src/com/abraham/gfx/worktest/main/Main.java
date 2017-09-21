@@ -7,8 +7,9 @@ import com.abraham.gfx.worktest.mainloop.MainLoop;
 public class Main {
 
 	public static void main(String args[]) {
-		MainLoop gl = new MainLoop();
+		
 		JFrame frm = new JFrame();
+		MainLoop gl = new MainLoop();
 
 		frm.setSize(gl.WIDTH, gl.HEIGHT);
 		frm.add(gl);

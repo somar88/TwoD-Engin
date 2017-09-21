@@ -9,6 +9,8 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Random;
 
+import com.abraham.gfx.Map;
+import com.abraham.gfx.Screen;
 import com.abraham.gfx.Sprite;
 import com.abraham.gfx.worktest.render.Render;
 
@@ -25,7 +27,7 @@ public class MainLoop extends Canvas implements Runnable {
 	public static Random random = new Random();
 
 	// Timing controllers
-	public static double FRAME_LIMITER = 1000_000_000d / 60d;
+	public static double FRAME_LIMITER = 1000_000_000d / 120d;
 	double reference_time;
 	double current_time;
 
@@ -41,13 +43,15 @@ public class MainLoop extends Canvas implements Runnable {
 	public KeyboardListner kbl = new KeyboardListner();
 	private Thread thread;
 	private boolean running = false;
-	private Render render = new Render();
+	private Render render = new Render(this);
 
 	// Main screen drawing sheet
-	public BufferedImage drawingBoard = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
-	public int[] ml_pixels = ((DataBufferInt) drawingBoard.getRaster().getDataBuffer()).getData();
+	// public Map map = new Map("/SpriteSheets/MiscDummy.png");
+	public Map map = new Map();
+	public Screen screen = new Screen(WIDTH / 2, HEIGHT / 2);
 
 	// Test objects
+
 	public BufferedImage entity_01 = new BufferedImage(32, 32, BufferedImage.TYPE_INT_RGB);
 	public int[] glPixels01 = ((DataBufferInt) entity_01.getRaster().getDataBuffer()).getData();
 
@@ -60,6 +64,7 @@ public class MainLoop extends Canvas implements Runnable {
 		HEIGHT = hight;
 		WIDTH = width;
 		this.setSize(WIDTH, HEIGHT);
+		this.addKeyListener(kbl);
 	}
 
 	@Override
@@ -75,13 +80,13 @@ public class MainLoop extends Canvas implements Runnable {
 			d_Time += (current_time - reference_time) / FRAME_LIMITER;
 			reference_time = current_time;
 			if (d_Time >= 1) {
-				tick(d_Time);
+				render.render(d_Time);
+				fps++;
 				d_Time--;
-				tps++;
 			}
-			render(d_Time);
-			fps++;
 
+			tick(d_Time);
+			tps++;
 			if (System.currentTimeMillis() - fpsMeter >= 1000) {
 				System.out.println("fps = " + fps + " , tps = " + tps);
 				fpsMeter += 1000;
@@ -100,7 +105,6 @@ public class MainLoop extends Canvas implements Runnable {
 			thread = new Thread(this, "GameLoop");
 			thread.start();
 		}
-
 	}
 
 	public void stop() {
@@ -113,15 +117,14 @@ public class MainLoop extends Canvas implements Runnable {
 			} catch (InterruptedException e) {
 				System.out.println("Error by closing the Thread with the error message:");
 				System.out.println(e.getMessage());
-
 			}
 		}
 	}
 
 	private void tick(double d_time) {
 
-		clearImage(ml_pixels); // Clearing the drawing sheet for redrawing the
-								// whole things
+		// Clearing the drawing sheet for redrawing the
+		// whole things
 		// GLO_Movement += (int) d_time;
 		// if (GLO_Movement > 60) {
 
@@ -137,6 +140,7 @@ public class MainLoop extends Canvas implements Runnable {
 		GLO_XPOS = (GLO_XPOS - kbl.dir[3]);
 		if (GLO_XPOS <= 0)
 			GLO_XPOS = 0;
+
 		// GLO_Movement = 0;
 		// }
 
@@ -152,10 +156,10 @@ public class MainLoop extends Canvas implements Runnable {
 		}
 
 		Graphics g = bs.getDrawGraphics();
-
+		render.drawScreen();
 		render.drawEntityAtPosition(GLO_XPOS, GLO_YPOS, Sprite.S.sprite, Sprite.S.sprite_width, Sprite.S.sprite_hight, this);
 
-		g.drawImage(drawingBoard, 0, 0, null);
+		g.drawImage(screen.drawingBoard, 0, 0, null);
 
 		//////////////////////////////////
 
@@ -194,11 +198,6 @@ public class MainLoop extends Canvas implements Runnable {
 	 * 
 	 * } }
 	 */
-	private void clearImage(int[] imagePixelsArray) {
-		for (int i = 0; i < imagePixelsArray.length; i++) {
-			imagePixelsArray[i] = 0xff00ff;
-		}
-	}
 
 	private class KeyboardListner implements KeyListener {
 

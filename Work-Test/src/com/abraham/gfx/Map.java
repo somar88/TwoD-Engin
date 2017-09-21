@@ -11,9 +11,13 @@ public class Map {
 
 	public int[] map_pixels;
 
+	public static Map emptyMap = new Map("/SpriteSheets/MiscDummy.png");
+
 	public Map() {
-		map_width = 640;
+		map_width = 3400;
 		map_height = map_width * (9 / 16);
+		map_pixels = new int[map_width * map_height];
+		map_fill();
 	}
 
 	public Map(String path) {
@@ -31,6 +35,15 @@ public class Map {
 		} catch (Exception e) {
 			System.out.println("Error by Loading Map image image:\n");
 			System.out.println(e.getMessage());
+		}
+	}
+
+	private void map_fill() {
+		for (int i = 0; i < this.map_width; i++) {
+			for (int j = 0; j < this.map_height; j++) {
+
+				this.map_pixels[i + (j * this.map_width)] = 0x0000000;
+			}
 		}
 	}
 
