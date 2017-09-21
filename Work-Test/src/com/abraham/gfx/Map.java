@@ -14,8 +14,8 @@ public class Map {
 	public static Map emptyMap = new Map("/SpriteSheets/MiscDummy.png");
 
 	public Map() {
-		map_width = 3400;
-		map_height = (int)map_width * (9 / 16);
+		map_width = 32*64;
+		map_height = 32*64;
 		map_pixels = new int[map_width * map_height];
 		map_fill();
 	}

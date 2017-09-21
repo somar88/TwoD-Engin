@@ -27,7 +27,7 @@ public class MainLoop extends Canvas implements Runnable {
 	public static Random random = new Random();
 
 	// Timing controllers
-	public static double FRAME_LIMITER = 1000_000_000d / 120d;
+	public static double FRAME_LIMITER = 1000_000_000d / 60d;
 	double reference_time;
 	double current_time;
 
@@ -48,7 +48,7 @@ public class MainLoop extends Canvas implements Runnable {
 	// Main screen drawing sheet
 	// public Map map = new Map("/SpriteSheets/MiscDummy.png");
 	public Map map = new Map();
-	public Screen screen = new Screen(WIDTH / 2, HEIGHT / 2);
+	public Screen screen = new Screen(WIDTH, HEIGHT);
 
 	// Test objects
 
