@@ -86,10 +86,13 @@ public class Render {
 	public void drawScreen() {
 
 		for (int x = 0; x < mainLoop.screen.Screen_Width; x++) {
-			if (x + mainLoop.screen.getScreen_X_Pos() < mainLoop.map.getMap_width()) {
-				for (int y = 0; y < mainLoop.screen.Screen_Height; y++) {
+			for (int y = 0; y < mainLoop.screen.Screen_Height; y++) {
+
+				if (x + mainLoop.screen.getScreen_X_Pos() < mainLoop.map.getMap_width()) {
 					if (y + mainLoop.screen.getScreen_Y_Pos() < mainLoop.map.getMap_height()) {
 						mainLoop.screen.screen_pixels[x + (y * mainLoop.screen.Screen_Width)] = mainLoop.map.map_pixels[((mainLoop.screen.getScreen_Y_Pos() + y) * mainLoop.map.getMap_width()) + (x + mainLoop.screen.getScreen_X_Pos())];
+					} else {
+						mainLoop.screen.screen_pixels[x + (y * mainLoop.screen.Screen_Width)] = 0xff00ff;
 					}
 				}
 			}

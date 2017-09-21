@@ -46,8 +46,8 @@ public class MainLoop extends Canvas implements Runnable {
 	private Render render = new Render(this);
 
 	// Main screen drawing sheet
-	// public Map map = new Map("/SpriteSheets/MiscDummy.png");
-	public Map map = new Map();
+	public Map map = new Map("/SpriteSheets/MiscDummy.png");
+	// public Map map = new Map();
 	public Screen screen = new Screen(WIDTH, HEIGHT);
 
 	// Test objects
