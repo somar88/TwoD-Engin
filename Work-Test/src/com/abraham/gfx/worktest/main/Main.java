@@ -7,7 +7,7 @@ import com.abraham.gfx.worktest.mainloop.MainLoop;
 public class Main {
 
 	public static void main(String args[]) {
-		
+
 		JFrame frm = new JFrame();
 		MainLoop gl = new MainLoop();
 
@@ -19,6 +19,7 @@ public class Main {
 		frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frm.setLocationRelativeTo(null);
 		frm.setVisible(true);
+		frm.setUndecorated(true);
 		gl.start();
 
 	}
