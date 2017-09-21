@@ -80,13 +80,13 @@ public class MainLoop extends Canvas implements Runnable {
 			d_Time += (current_time - reference_time) / FRAME_LIMITER;
 			reference_time = current_time;
 			if (d_Time >= 1) {
-				render.render(d_Time);
-				fps++;
+
+				tick(d_Time);
+				tps++;
 				d_Time--;
 			}
-
-			tick(d_Time);
-			tps++;
+			render.render(d_Time);
+			fps++;
 			if (System.currentTimeMillis() - fpsMeter >= 1000) {
 				System.out.println("fps = " + fps + " , tps = " + tps);
 				fpsMeter += 1000;

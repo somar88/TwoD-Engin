@@ -15,7 +15,7 @@ public class Map {
 
 	public Map() {
 		map_width = 3400;
-		map_height = map_width * (9 / 16);
+		map_height = (int)map_width * (9 / 16);
 		map_pixels = new int[map_width * map_height];
 		map_fill();
 	}
@@ -42,7 +42,7 @@ public class Map {
 		for (int i = 0; i < this.map_width; i++) {
 			for (int j = 0; j < this.map_height; j++) {
 
-				this.map_pixels[i + (j * this.map_width)] = 0x0000000;
+				map_pixels[i + (j * this.map_width)] = 0xff0000;
 			}
 		}
 	}

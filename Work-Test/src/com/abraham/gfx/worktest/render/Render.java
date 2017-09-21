@@ -23,8 +23,13 @@ public class Render {
 			mainLoop.createBufferStrategy(3);
 			return;
 		}
-
+		
 		Graphics g = bs.getDrawGraphics();
+
+		
+
+
+		drawScreen();
 
 		//////////////////////////////////
 
@@ -43,8 +48,6 @@ public class Render {
 		 * drawEntityAtPosition(ml.GLO_XPOS, ml.GLO_YPOS, ml.glPixels01, ml.entity_01.getWidth(), ml.entity_01.getHeight(), ml);
 		 */
 
-		drawScreen();
-
 		// drawEntityAtPosition(random.nextInt(WIDTH), random.nextInt(HEIGHT),
 		// glPixels01, entity_01.getWidth(),entity_01.getHeight());
 		g.drawImage(mainLoop.screen.drawingBoard, 0, 0, null);
@@ -54,7 +57,7 @@ public class Render {
 
 		g.dispose();
 		bs.show();
-		clearImage(mainLoop.screen.screen_pixels);
+//		clearImage(mainLoop.screen.screen_pixels);
 
 	}
 
@@ -106,7 +109,7 @@ public class Render {
 
 	private void clearImage(int[] imagePixelsArray) {
 		for (int i = 0; i < imagePixelsArray.length; i++) {
-			imagePixelsArray[i] = 0xff00ff;
+			imagePixelsArray[i] = 0x007777;
 		}
 	}
 
