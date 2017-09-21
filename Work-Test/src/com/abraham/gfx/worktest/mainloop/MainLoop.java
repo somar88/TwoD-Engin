@@ -148,6 +148,7 @@ public class MainLoop extends Canvas implements Runnable {
 
 	}
 
+	@SuppressWarnings("unused")
 	private void render(double d_time) {
 		BufferStrategy bs = getBufferStrategy();
 		if (bs == null) {

@@ -19,7 +19,6 @@ public class Main {
 		frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frm.setLocationRelativeTo(null);
 		frm.setVisible(true);
-		frm.setUndecorated(true);
 		gl.start();
 
 	}

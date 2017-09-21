@@ -2,8 +2,6 @@ package com.abraham.gfx.worktest.render;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-
-import com.abraham.gfx.Map;
 import com.abraham.gfx.Screen;
 import com.abraham.gfx.TileMap;
 import com.abraham.gfx.worktest.mainloop.MainLoop;
@@ -72,7 +70,7 @@ public class Render {
 				// screen we have to stop displaying
 				// and move forward with drawing loop
 
-				if (y + yPos >= ml.HEIGHT || y + yPos < 0) { 
+				if (y + yPos >= ml.HEIGHT || y + yPos < 0) {
 					continue;
 				}
 				// TODO: do not forget this
@@ -88,12 +86,12 @@ public class Render {
 			if (x + mainLoop.screen.getScreen_X_Pos() < mainLoop.map.getMap_width()) {
 				for (int y = 0; y < mainLoop.screen.Screen_Width; y++) {
 					if (y + mainLoop.screen.getScreen_Y_Pos() < mainLoop.map.getMap_height()) {
-						mainLoop.screen.screen_pixels[x + (y * mainLoop.screen.Screen_Width)] = mainLoop.map.map_pixels[(x + mainLoop.screen.getScreen_X_Pos() + ((y + mainLoop.screen.getScreen_Y_Pos()) * mainLoop.map.getMap_width()))];
+						mainLoop.screen.screen_pixels[x
+								+ (y * mainLoop.screen.Screen_Width)] = mainLoop.map.map_pixels[(x + mainLoop.screen.getScreen_X_Pos() + ((y + mainLoop.screen.getScreen_Y_Pos()) * mainLoop.map.getMap_width()))];
 					}
 				}
 			}
 		}
-		
 
 	}
 
