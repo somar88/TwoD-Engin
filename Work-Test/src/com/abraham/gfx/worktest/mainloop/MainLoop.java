@@ -126,8 +126,25 @@ public class MainLoop extends Canvas implements Runnable {
 		// Clearing the drawing sheet for redrawing the
 		// whole things
 		// GLO_Movement += (int) d_time;
-		// if (GLO_Movement > 60) {
 
+		// Go down
+		screen.setScreen_Y_Pos(screen.getScreen_Y_Pos() + kbl.dir[0]);
+		if (screen.getScreen_Y_Pos() + screen.getScreen_Heiht() >= map.getMap_height())
+			screen.setScreen_Y_Pos(map.getMap_height() - screen.getScreen_Heiht());
+		// Go up
+		screen.setScreen_Y_Pos(screen.getScreen_Y_Pos() - kbl.dir[1]);
+		if (screen.getScreen_Y_Pos() < 0)
+			screen.setScreen_Y_Pos(0);
+		// Go right
+		screen.setScreen_X_Pos(screen.getScreen_X_Pos() + kbl.dir[2]);
+		if (screen.getScreen_X_Pos() + screen.getScreen_Width() >= map.getMap_width())
+			screen.setScreen_X_Pos(map.getMap_width() - screen.getScreen_Width());
+		// Go left
+		screen.setScreen_X_Pos(screen.getScreen_X_Pos() - kbl.dir[3]);
+		if (screen.getScreen_X_Pos() < 0)
+			screen.setScreen_X_Pos(0);
+		// if (GLO_Movement > 60) {
+		/*
 		GLO_YPOS = (GLO_YPOS + kbl.dir[0]);
 		if (GLO_YPOS >= HEIGHT - 32)
 			GLO_YPOS = HEIGHT - 32;
@@ -140,7 +157,7 @@ public class MainLoop extends Canvas implements Runnable {
 		GLO_XPOS = (GLO_XPOS - kbl.dir[3]);
 		if (GLO_XPOS <= 0)
 			GLO_XPOS = 0;
-
+		 */
 		// GLO_Movement = 0;
 		// }
 
@@ -199,7 +216,8 @@ public class MainLoop extends Canvas implements Runnable {
 	 * 
 	 * } }
 	 */
-
+	
+	//TODO: deal with the naming issue (screen)
 	private class KeyboardListner implements KeyListener {
 
 		public int[] dir = new int[4];
