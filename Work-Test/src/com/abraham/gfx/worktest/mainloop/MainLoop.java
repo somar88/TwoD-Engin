@@ -1,6 +1,7 @@
 package com.abraham.gfx.worktest.mainloop;
 
 import java.awt.Canvas;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -21,8 +22,8 @@ public class MainLoop extends Canvas implements Runnable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public int WIDTH = 640;
-	public int HEIGHT = 480;
+	public int WIDTH = 320;
+	public int HEIGHT = WIDTH / 16 * 9;
 
 	public static Random random = new Random();
 
@@ -56,7 +57,8 @@ public class MainLoop extends Canvas implements Runnable {
 	public int[] glPixels01 = ((DataBufferInt) entity_01.getRaster().getDataBuffer()).getData();
 
 	public MainLoop() {
-		this.setSize(WIDTH, HEIGHT);
+		Dimension pref_size = new Dimension(WIDTH, HEIGHT);
+		setPreferredSize(pref_size);
 		this.addKeyListener(kbl);
 	}
 
@@ -145,18 +147,7 @@ public class MainLoop extends Canvas implements Runnable {
 			screen.setScreen_X_Pos(0);
 		// if (GLO_Movement > 60) {
 		/*
-		GLO_YPOS = (GLO_YPOS + kbl.dir[0]);
-		if (GLO_YPOS >= HEIGHT - 32)
-			GLO_YPOS = HEIGHT - 32;
-		GLO_YPOS = (GLO_YPOS - kbl.dir[1]);
-		if (GLO_YPOS <= 0)
-			GLO_YPOS = 0;
-		GLO_XPOS = (GLO_XPOS + kbl.dir[2]);
-		if (GLO_XPOS >= WIDTH - 32)
-			GLO_XPOS = WIDTH - 32;
-		GLO_XPOS = (GLO_XPOS - kbl.dir[3]);
-		if (GLO_XPOS <= 0)
-			GLO_XPOS = 0;
+		 * GLO_YPOS = (GLO_YPOS + kbl.dir[0]); if (GLO_YPOS >= HEIGHT - 32) GLO_YPOS = HEIGHT - 32; GLO_YPOS = (GLO_YPOS - kbl.dir[1]); if (GLO_YPOS <= 0) GLO_YPOS = 0; GLO_XPOS = (GLO_XPOS + kbl.dir[2]); if (GLO_XPOS >= WIDTH - 32) GLO_XPOS = WIDTH - 32; GLO_XPOS = (GLO_XPOS - kbl.dir[3]); if (GLO_XPOS <= 0) GLO_XPOS = 0;
 		 */
 		// GLO_Movement = 0;
 		// }
@@ -216,8 +207,8 @@ public class MainLoop extends Canvas implements Runnable {
 	 * 
 	 * } }
 	 */
-	
-	//TODO: deal with the naming issue (screen)
+
+	// TODO: deal with the naming issue (screen)
 	private class KeyboardListner implements KeyListener {
 
 		public int[] dir = new int[4];
