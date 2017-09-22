@@ -6,4 +6,10 @@ public class Level {
 
 	}
 
+	public Level(String path) {
+		
+		
+
+	}
+
 }
