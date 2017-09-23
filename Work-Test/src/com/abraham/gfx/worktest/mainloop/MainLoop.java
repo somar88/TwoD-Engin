@@ -9,7 +9,6 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Random;
-
 import com.abraham.gfx.Map;
 import com.abraham.gfx.Screen;
 import com.abraham.gfx.Sprite;
