@@ -9,7 +9,6 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Random;
-
 import com.abraham.gfx.Map;
 import com.abraham.gfx.Screen;
 import com.abraham.gfx.Sprite;
@@ -22,7 +21,7 @@ public class MainLoop extends Canvas implements Runnable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public int WIDTH = 320;
+	public int WIDTH = 640;
 	public int HEIGHT = WIDTH / 16 * 9;
 	public int SCALE = 3;
 
