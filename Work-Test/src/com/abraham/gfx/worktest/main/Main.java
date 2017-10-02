@@ -11,17 +11,17 @@ public class Main {
 	public static void main(String args[]) {
 
 		JFrame frm = new JFrame();
-		MainLoop gl = new MainLoop();
-		Dimension d = new Dimension(gl.WIDTH * 3, gl.HEIGHT * 3);
+		MainLoop ml = new MainLoop();
+		Dimension d = new Dimension(ml.WIDTH * 3, ml.HEIGHT * 3);
 		frm.setPreferredSize(d);
-		frm.add(gl);
-		frm.addKeyListener(gl.kbl);
+		frm.add(ml);
+		frm.addKeyListener(ml.kbl);
 		frm.setResizable(false);
 		frm.pack();
 		frm.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frm.setLocationRelativeTo(null);
 		frm.setVisible(true);
-		gl.start();
+		ml.start();
 
 	}
 
