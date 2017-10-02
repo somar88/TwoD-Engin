@@ -32,7 +32,7 @@ public class Screen {
 		Screen_Width = screen_Width;
 	}
 
-	public int getScreen_Heiht() {
+	public int getScreen_Height() {
 		return Screen_Height;
 	}
 

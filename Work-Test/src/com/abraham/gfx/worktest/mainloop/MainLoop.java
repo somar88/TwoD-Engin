@@ -131,8 +131,8 @@ public class MainLoop extends Canvas implements Runnable {
 
 		// Go down
 		screen.setScreen_Y_Pos(screen.getScreen_Y_Pos() + kbl.dir[0]);
-		if (screen.getScreen_Y_Pos() + screen.getScreen_Heiht() >= map.getMap_height())
-			screen.setScreen_Y_Pos(map.getMap_height() - screen.getScreen_Heiht());
+		if (screen.getScreen_Y_Pos() + screen.getScreen_Height() >= map.getMap_height())
+			screen.setScreen_Y_Pos(map.getMap_height() - screen.getScreen_Height());
 		// Go up
 		screen.setScreen_Y_Pos(screen.getScreen_Y_Pos() - kbl.dir[1]);
 		if (screen.getScreen_Y_Pos() < 0)
@@ -168,7 +168,7 @@ public class MainLoop extends Canvas implements Runnable {
 		render.drawScreen();
 		render.drawEntityAtPosition(GLO_XPOS, GLO_YPOS, Sprite.S.sprite, Sprite.S.sprite_width, Sprite.S.sprite_hight, this);
 
-		g.drawImage(screen.drawingBoard, 0, 0, null);
+		g.drawImage(screen.drawingBoard, 0, 0, screen.getScreen_Width() * 3,screen.getScreen_Height() * 3,  null);
 
 		//////////////////////////////////
 

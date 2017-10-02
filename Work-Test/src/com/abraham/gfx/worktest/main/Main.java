@@ -1,5 +1,7 @@
 package com.abraham.gfx.worktest.main;
 
+import java.awt.Dimension;
+
 import javax.swing.JFrame;
 
 import com.abraham.gfx.worktest.mainloop.MainLoop;
@@ -10,8 +12,9 @@ public class Main {
 
 		JFrame frm = new JFrame();
 		MainLoop gl = new MainLoop();
+		Dimension d = new Dimension(gl.WIDTH * 3, gl.HEIGHT * 3);
 
-		frm.setSize(gl.WIDTH, gl.HEIGHT);
+		frm.setPreferredSize(d);
 		frm.add(gl);
 		frm.addKeyListener(gl.kbl);
 		frm.setResizable(false);

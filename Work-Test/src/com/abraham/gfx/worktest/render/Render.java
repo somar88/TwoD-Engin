@@ -50,7 +50,7 @@ public class Render {
 
 		// drawEntityAtPosition(random.nextInt(WIDTH), random.nextInt(HEIGHT),
 		// glPixels01, entity_01.getWidth(),entity_01.getHeight());
-		g.drawImage(mainLoop.screen.drawingBoard, 0, 0, null);
+		g.drawImage(mainLoop.screen.drawingBoard, 0, 0, mainLoop.screen.getScreen_Width() * 3, mainLoop.screen.getScreen_Height() * 3, null);
 		// Stuff drawing area
 
 		//////////////////////////////////
