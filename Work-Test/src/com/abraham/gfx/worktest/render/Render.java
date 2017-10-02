@@ -29,9 +29,7 @@ public class Render {
 
 		Graphics g = bs.getDrawGraphics();
 
-		drawScreen();
-		System.out.println();
-
+		drawScreen(); 
 		//////////////////////////////////
 
 		// g.drawLine(0, 0, WIDTH, HIGHT);
