@@ -13,7 +13,6 @@ public class Main {
 		JFrame frm = new JFrame();
 		MainLoop gl = new MainLoop();
 		Dimension d = new Dimension(gl.WIDTH * 3, gl.HEIGHT * 3);
-
 		frm.setPreferredSize(d);
 		frm.add(gl);
 		frm.addKeyListener(gl.kbl);

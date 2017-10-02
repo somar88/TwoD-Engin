@@ -24,6 +24,7 @@ public class MainLoop extends Canvas implements Runnable {
 
 	public int WIDTH = 320;
 	public int HEIGHT = WIDTH / 16 * 9;
+	public int SCALE = 3;
 
 	public static Random random = new Random();
 
@@ -168,7 +169,7 @@ public class MainLoop extends Canvas implements Runnable {
 		render.drawScreen();
 		render.drawEntityAtPosition(GLO_XPOS, GLO_YPOS, Sprite.S.sprite, Sprite.S.sprite_width, Sprite.S.sprite_hight, this);
 
-		g.drawImage(screen.drawingBoard, 0, 0, screen.getScreen_Width() * 3,screen.getScreen_Height() * 3,  null);
+		g.drawImage(screen.drawingBoard, 0, 0, screen.getScreen_Width() * 3, screen.getScreen_Height() * 3, null);
 
 		//////////////////////////////////
 
